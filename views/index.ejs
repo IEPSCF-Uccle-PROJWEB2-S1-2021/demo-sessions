@@ -1,4 +1,25 @@
 <%- include('header'); -%>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<div class="container">
+  <h1><%= title %></h1>
+  <div class="d-flex">
+    <p class="lead flex-fill">Welcome to <%= title %></p>
+    <p><a href="/basket" class="btn btn-outline-primary">View your basket <span class="badge bg-primary"><%= basket.length %></span></a></p>
+  </div>
+  <div>
+    <form action="/buy" method="post">
+      <div class="card-group">
+        <% items.forEach(item => { %>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><%= item.description %></p>
+              <p class="card-text"><small class="text-muted">$<%= item.price %></small></p>
+              <button type="submit" name="item" value="<%= item.id %>" href="#" class="btn btn-outline-primary">Add to basket</a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </form>
+  </div>
+</div>
 <%- include('footer') -%>

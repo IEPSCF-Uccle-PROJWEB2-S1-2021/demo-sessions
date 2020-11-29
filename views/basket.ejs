@@ -1,0 +1,29 @@
+<%- include('header'); -%>
+<div class="container">
+  <h1><%= title %></h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% basket.forEach((item) => { %>
+        <tr>
+          <td><%= item.title %></td>
+          <td class="text-right">$<%= item.price %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+    <tfoot>
+      <th scope="row">TOTAL</th>
+      <td class="text-right">$<%= total.toFixed(2) %></td>
+    </tfoot>
+  </table>
+  <p>
+    <a href="/payment" class="btn btn-primary">Proceed to payment</a>
+    <a href="/" class="btn btn-outline-secondary">Back to web shop</a>
+  </p>
+</div>
+<%- include('footer') -%>
